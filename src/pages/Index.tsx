@@ -12,6 +12,19 @@ import { CreateListingModal } from "@/components/CreateListingModal";
 import { ListingCard } from "@/components/ListingCard";
 import { DeepSearchModal } from "@/components/DeepSearchModal";
 
+interface Listing {
+  id: number;
+  type: "WTS" | "WTB";
+  title: string;
+  price: number;
+  condition: string;
+  location: string;
+  image: string;
+  seller: string;
+  rating: number;
+  quantity: number;
+}
+
 const Index = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showCreateListing, setShowCreateListing] = useState(false);
@@ -21,10 +34,10 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("all");
 
   // Mock data for demonstration
-  const mockListings = [
+  const mockListings: Listing[] = [
     {
       id: 1,
-      type: "WTS",
+      type: "WTS" as const,
       title: "iPhone 15 Pro Max 256GB",
       price: 1199,
       condition: "Like New",
@@ -36,7 +49,7 @@ const Index = () => {
     },
     {
       id: 2,
-      type: "WTB",
+      type: "WTB" as const,
       title: "Samsung Galaxy S24 Ultra",
       price: 900,
       condition: "Good",
@@ -48,7 +61,7 @@ const Index = () => {
     },
     {
       id: 3,
-      type: "WTS",
+      type: "WTS" as const,
       title: "iPad Air M2 64GB",
       price: 450,
       condition: "Excellent",
